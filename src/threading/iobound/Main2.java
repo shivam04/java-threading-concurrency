@@ -15,7 +15,8 @@ public class Main2 {
     }
 
     private static void performTasks() {
-        try(ExecutorService executorService = Executors.newFixedThreadPool(1000)) {
+        ExecutorService executorService = Executors.newFixedThreadPool(1000);
+        try {
 
             for (int i = 0; i < NUMBER_OF_TASKS; i++) {
                 executorService.submit(new Runnable() {
@@ -27,6 +28,8 @@ public class Main2 {
                     }
                 });
             }
+        } catch (Exception exception) {
+            exception.printStackTrace();
         }
     }
 

@@ -15,11 +15,14 @@ public class Main3 {
     }
 
     private static void performTasks() {
-        try(ExecutorService executorService = Executors.newFixedThreadPool(1000)) {
+        ExecutorService executorService = Executors.newFixedThreadPool(1000);
+        try{
 
             for (int i = 0; i < NUMBER_OF_TASKS; i++) {
                 executorService.submit(() -> blockingIoOperation());
             }
+        } catch (Exception exception) {
+            exception.printStackTrace();
         }
     }
 
